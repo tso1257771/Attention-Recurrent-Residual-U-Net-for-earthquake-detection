@@ -26,7 +26,7 @@ logging.basicConfig(level=logging.INFO,
                     format='%(levelname)s : %(asctime)s : %(message)s')
 
 basepath = '../'
-mdl_hdr = 'ARRU_detect/EQT_detect_20s'
+mdl_dir = 'pretrained_model/multitask_ARRU_20s'
 TFRpath = os.path.join(basepath, 'STEAD/input_TFRecord_EQT_20s')
 
 datapath = os.path.join(basepath, 'STEAD/sac_data_EQT_20s/test')
@@ -42,8 +42,6 @@ outpath = os.path.join(basepath,
 
 data_length = 2001
 frame = unets(input_size=(data_length, 3))
-mdl_dir = os.path.join(basepath, 
-    's02_trained_model', mdl_hdr) #166, 241, 208
 model = frame.build_attR2unet(
     os.path.join(mdl_dir, 'train.hdf5'), 
     input_size=(data_length, 3))
