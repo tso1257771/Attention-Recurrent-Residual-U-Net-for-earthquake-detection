@@ -8,8 +8,9 @@ import numpy as np
 import pandas as pd
 from obspy import read, UTCDateTime
 from obspy.io.sac.sactrace import SACTrace
-from STEAD_tools.make_sac import stream_from_h5
-from STEAD_tools.STEAD_utils import *
+from code_tools.STEAD_utils import STEAD_h5
+from code_tools.STEAD_utils import STEAD_csv
+from code_tools.STEAD_utils import stream_from_h5
 from code_tools.data_utils import snr_pt_v2
 from code_tools.data_utils import stream_standardize
 from code_tools.data_utils import gen_tar_func
@@ -17,7 +18,8 @@ from code_tools.example_parser import write_TFRecord_detect
 logging.basicConfig(level=logging.INFO,
     format='%(levelname)s : %(asctime)s : %(message)s')
 
-h5 = './merge.hdf5'
+#h5 = './merge.hdf5'
+h5 = '/home/rick/HHD_10T/eqpick_temp_backup/STEAD/merge.hdf5'
 csv_type = 'test'
 outdir = os.path.join(f'./data/sac_data_STEAD_20s/{csv_type}')
 outtf = os.path.join(f'./data/input_TFRecord_STEAD_20s/{csv_type}')
@@ -37,9 +39,9 @@ data_sec = 20
 dt = 0.01
 err_win_p = 0.4
 err_win_s = 0.4
-secs_bef_P = 1
-secs_aft_S = 3
-ps_res_limit = 15.9
+secs_bef_P = 3
+secs_aft_S = 5
+ps_res_limit = 11.9
 # convering hdf5 dataset into obspy sream
 tf_ct = 0
 sac_ct = 0
