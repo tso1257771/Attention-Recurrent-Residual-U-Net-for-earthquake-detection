@@ -3,16 +3,15 @@ We're working on a more stable model on processing continuous seismograms as wel
 Here are just the simple scripts for model training and prediction using STandford Earthquake Dataset (STEAD) dataset. 
 
 # Equipments
-tensorflow-gpu >=2.0.0 
+tensorflow-gpu >=2.0.0 <br/>
 tensorflow-addons 0.11.2 
 (any version equipped with 'tensorflow_addons.optimizers.RectifiedAdam' module is fine)
 
 # Script piplines 
 Below describes the workflow from data generation, model training, making predictions, to model evaluation. 
 
-1. Prepare the seismic recordings from STEAD data : `P01_make_stream_STEAD.py`\n
-This script simply generates sac files as well as TFRecord in length of 20 seconds. This would require the STEAD dataset (https://github.com/smousavi05/STEAD), please download and place the 'merge.hdf5' (you could retreive this entire STEAD dataset here: https://mega.nz/folder/HNwm0SLY#h70tuXK2tpiQJAaPq72FFQ) file in the directory './data'. You can change the variable 'csv_type' line 22 with ['train', 'test', 'val'] to generate dataset we used in our study according to the list stored in './data/partition_csv'. Noted that you have to make './data/partition_csv/train_STEAD.csv' on your own according to uploaded file './partition_csv/test_STEAD.csv' from complete information of STEAD dataset.
------
+1. Prepare the seismic recordings from STEAD data : `P01_make_stream_STEAD.py`<br/>
+This script simply generates sac files as well as TFRecord in length of 20 seconds. This would require the STEAD dataset (https://github.com/smousavi05/STEAD), please download and place the 'merge.hdf5' (you could retreive this entire STEAD dataset here: https://mega.nz/folder/HNwm0SLY#h70tuXK2tpiQJAaPq72FFQ) file in the directory './data'. You can change the variable 'csv_type' in line 22 with ['train', 'test', 'val'] to generate dataset we used in our study according to the list stored in './data/partition_csv'. Noted that you have to make './data/partition_csv/train_STEAD.csv' on your own according to uploaded file './partition_csv/test_STEAD.csv' from complete information of STEAD dataset.<br/>
 output directory: (1) './data/sac_data_STEAD_20s' (2) './input_TFRecord_STEAD_20s'
 
 2. 
