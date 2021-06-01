@@ -14,16 +14,16 @@ from code_tools.data_utils import snr_pt_v2
 from code_tools.data_utils import stream_standardize
 from code_tools.data_utils import gen_tar_func
 from code_tools.example_parser import write_TFRecord_detect
-
 logging.basicConfig(level=logging.INFO,
     format='%(levelname)s : %(asctime)s : %(message)s')
 
-h5 = './merge.hdf5'
+#h5 = './merge.hdf5'
+h5 = '/home/rick/HHD_10T/eqpick_temp_backup/STEAD/merge.hdf5'
 csv_type = 'test'
 outdir = os.path.join(f'./data/sac_data_STEAD_20s/{csv_type}')
 outtf = os.path.join(f'./data/input_TFRecord_STEAD_20s/{csv_type}')
 os.system(f'rm -rf {outdir} {outtf}')
-data_csv = f'./out_csv/{csv_type}_STEAD.csv'
+data_csv = f'./data/partition_csv/{csv_type}_STEAD.csv'
 if not os.path.exists(outtf):
     os.makedirs(outtf)
 
@@ -32,7 +32,7 @@ dtfl = STEAD_h5(h5)
 
 calculate_snr = True
 snr_win = 3
-bandpass = [1, 45]
+bandpass = False
 data_length = 2001
 data_sec = 20
 dt = 0.01
