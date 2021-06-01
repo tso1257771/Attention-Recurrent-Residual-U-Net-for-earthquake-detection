@@ -1,5 +1,6 @@
 import os
 import sys
+sys.path.append('../')
 import logging
 import tensorflow as tf
 import numpy as np
@@ -11,7 +12,6 @@ from code_tools.model.save_model import save_model_v2
 from code_tools.model.opt_model_gpus import distributed_train_step
 from code_tools.model.opt_model_gpus import  distributed_val_step
 from code_tools.data_io import tfrecord_dataset_detect
-
 AUTOTUNE = tf.data.experimental.AUTOTUNE
 logging.basicConfig(level=logging.INFO,
                 format='%(levelname)s : %(asctime)s : %(message)s')
@@ -19,11 +19,11 @@ gpu_devices = tf.config.experimental.list_physical_devices('GPU')
 for device in gpu_devices:
     tf.config.experimental.set_memory_growth(device, True)
 ##############################3 basic information
-basepath = './'
-datapath = os.path.join(basepath, '../input_TFRecord_EQT_20s')
-outdir = os.path.join(basepath, 's02_trained_model',
-            f'ARRU_detect/EQT_detect_20s')
-if not os.path.exists(outdir): os.makedirs(outdir)
+basepath = '../'
+datapath = os.path.join(basepath, 'data/input_TFRecord_STEAD_20s')
+outdir = os.path.join(basepath, 's02_trained_model', f'ARRU_pick_20s')
+if not os.path.exists(outdir): 
+    os.makedirs(outdir)
 train_wf = glob(os.path.join(datapath, 'train/*.tfrecord'))#[:50000]
 val_wf = glob(os.path.join(datapath, 'val/*.tfrecord'))#[:5000]
 train_list = np.random.permutation(train_wf)
@@ -34,8 +34,6 @@ frame = unets(input_size=(2001, 3))
 train_epoch = 300
 data_length = 2001
 not_improve_patience = 20
-resume_training = False
-save_model_per_epoch = False
 
 # multi-devices strategy
 batch_size_per_replica = 20
@@ -50,7 +48,8 @@ n_train_data = len(train_list)
 n_val_data = len(val_list)
 train_steps_per_epoch = int(np.floor(n_train_data/global_batch_size))
 val_steps_per_epoch = int(np.floor(n_val_data/global_batch_size))
-
+train_steps = int(np.floor(len(train_wf)/\
+    (batch_size_per_replica*n_device)*train_epoch))
 ############################### model training
 ## Initiliaze model 
 #train_loss_avg = tf.keras.metrics.Mean(name='train_loss')
@@ -58,7 +57,7 @@ val_steps_per_epoch = int(np.floor(n_val_data/global_batch_size))
 
 with strategy.scope():
     opt = RectifiedAdam(lr=1e-4, min_lr=1e-6, 
-            warmup_proportion=0.1, total_steps=1785900)
+            warmup_proportion=0.1, total_steps=train_steps)
     loss_estimator = tf.keras.losses.CategoricalCrossentropy(
         from_logits=False, reduction=tf.keras.losses.Reduction.NONE)
     train_acc = tf.keras.metrics.CategoricalAccuracy(name='train_acc')
@@ -193,11 +192,12 @@ with strategy.scope():
             ct_not_improve += 1
             logging.info(f"val_loss {track_item:.6f} "
                 f"did not improve from {track_loss:.6f}")
-            logging.info(f'Saved to {save_dir}\n')
-            message = save_model_v2(
-                model, save_dir,
-                train_loss_epoch, val_loss_epoch,
-                train_acc_epoch, val_acc_epoch)
+            if save_model_per_epoch:
+                logging.info(f'Saved to {save_dir}\n')
+                message = save_model_v2(
+                    model, save_dir,
+                    train_loss_epoch, val_loss_epoch,
+                    train_acc_epoch, val_acc_epoch)
 
         if ct_not_improve == not_improve_patience:
             logging.info("Performance has not improved for "
