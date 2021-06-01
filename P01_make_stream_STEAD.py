@@ -22,7 +22,7 @@ csv_type = 'test'
 outdir = os.path.join(f'./data/sac_data_STEAD_20s/{csv_type}')
 outtf = os.path.join(f'./data/input_TFRecord_STEAD_20s/{csv_type}')
 os.system(f'rm -rf {outdir} {outtf}')
-data_csv = f'./partition_csv/{csv_type}_STEAD.csv'
+data_csv = f'./data/partition_csv/{csv_type}_STEAD.csv'
 if not os.path.exists(outtf):
     os.makedirs(outtf)
 
