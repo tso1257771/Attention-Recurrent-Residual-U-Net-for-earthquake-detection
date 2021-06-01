@@ -315,13 +315,9 @@ class unets:
         up6 = self.upconv_unit(inputs=up5_fus, nb_filter=nb_filters[0], concatenate_layer=conv_init_exp, apply_attention=True)
         up6_fus = self.RRconv_unit(inputs=up6, nb_filter=nb_filters[0], stride_size=None)
 
-        encode_up6 = Bidirectional(LSTM(units=nb_filters[0], return_sequences=True))(up6_fus)                  
-        #global_mha = MultiHeadAttention(num_heads=2, key_dim=2, name='global_mha')(encode_up6, encode_up6)
-        global_att = self_layer_unit(encode_up6, encode_up6)
-        global_att = self_layer_unit(global_att, global_att)
         ##========== Output map
-        outmap = Conv1D(3, 1, kernel_initializer='he_uniform', name='pred_label')(global_att)#, kernel_regularizer=l2(1e-3)
-        outmask = Conv1D(2, 1, kernel_initializer='he_uniform', name='pred_mask')(global_att)
+        outmap = Conv1D(3, 1, kernel_initializer='he_uniform', name='pred_label')(up6_fus)#, kernel_regularizer=l2(1e-3)
+        outmask = Conv1D(2, 1, kernel_initializer='he_uniform', name='pred_mask')(up6_fus)
         outmap_Act = Activation(self.out_activation)(outmap)
         outmask_Act = Activation(self.out_activation)(outmask)
         model = Model(inputs=inputs, outputs=[outmap_Act, outmask_Act])
