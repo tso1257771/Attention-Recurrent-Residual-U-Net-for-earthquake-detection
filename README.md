@@ -11,6 +11,7 @@ tensorflow-addons 0.11.2
 Below describes the workflow from data generation, model training, making predictions, to model evaluation. 
 
 1. Prepare the seismic recordings from STEAD data : `P01_make_stream_STEAD.py`
+
 This script simply generates sac files as well as TFRecord in length of 20 seconds. This would require the STEAD dataset (https://github.com/smousavi05/STEAD), please download and place the 'merge.hdf5' (you could retreive this entire STEAD dataset here: https://mega.nz/folder/HNwm0SLY#h70tuXK2tpiQJAaPq72FFQ) file in the directory './data'. You can change the variable 'csv_type' line 22 with ['train', 'test', 'val'] to generate dataset we used in our study according to the list stored in './data/partition_csv'. Noted that you have to make './data/partition_csv/train_STEAD.csv' on your own according to uploaded file './partition_csv/test_STEAD.csv' from complete information of STEAD dataset.
 -----
 output directory: (1) './data/sac_data_STEAD_20s' (2) './input_TFRecord_STEAD_20s'
