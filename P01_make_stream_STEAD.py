@@ -17,13 +17,12 @@ from code_tools.example_parser import write_TFRecord_detect
 logging.basicConfig(level=logging.INFO,
     format='%(levelname)s : %(asctime)s : %(message)s')
 
-#h5 = './merge.hdf5'
-h5 = '/home/rick/HHD_10T/eqpick_temp_backup/STEAD/merge.hdf5'
+h5 = './merge.hdf5'
 csv_type = 'test'
 outdir = os.path.join(f'./data/sac_data_STEAD_20s/{csv_type}')
 outtf = os.path.join(f'./data/input_TFRecord_STEAD_20s/{csv_type}')
 os.system(f'rm -rf {outdir} {outtf}')
-data_csv = f'./data/partition_csv/{csv_type}_STEAD.csv'
+data_csv = f'./partition_csv/{csv_type}_STEAD.csv'
 if not os.path.exists(outtf):
     os.makedirs(outtf)
 
