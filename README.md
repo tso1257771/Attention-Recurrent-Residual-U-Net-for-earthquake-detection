@@ -21,8 +21,10 @@ The former works as seismic phase picker described in our paper, and the latter 
 **`./P02_train_codes/P01_Unet_train_gpus_STEAD.py`**<br/>
 **`./P02_train_codes/P01_Unet_train_detect_gpus_STEAD.py`**<br/>
 
-3. **Making predictions on STEAD dataset**<br\>
-4. **Model evaluation** <br\>
+3. **Making predictions on STEAD dataset**<br/>
+
+4. **Model evaluation** <br/>
+
 5. Quick example of making predictions using pretrained model <br/>
 ```$ python quick_ex.py```
 
