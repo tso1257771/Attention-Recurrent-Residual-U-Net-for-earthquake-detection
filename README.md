@@ -2,6 +2,9 @@
 We're working on a more stable model on processing continuous seismograms as well as an useful repository! <br/>
 Here are just the simple scripts for model training and prediction using STandford Earthquake Dataset (STEAD) dataset. 
 
+https://user-images.githubusercontent.com/30610646/120765835-327a6300-c54c-11eb-99b2-6ea4bf6b1c94.mp4
+
+
 # Equipments
 tensorflow-gpu >=2.0.0 <br/>
 tensorflow-addons 0.11.2 
