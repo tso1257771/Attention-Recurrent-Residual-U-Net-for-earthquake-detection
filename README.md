@@ -31,5 +31,7 @@ The former works as seismic phase picker described in our paper, and the latter 
 5. Quick example of making predictions using pretrained model <br/>
 ```$ python quick_ex.py```
 
+6. Stable real-time processing <br/>
+
 # Reference
 Wu‐Yu Liao, En‐Jui Lee, Dawei Mu, Po Chen, Ruey‐Juin Rau; ARRU Phase Picker: Attention Recurrent‐Residual U‐Net for Picking Seismic P‐ and S‐Phase Arrivals. Seismological Research Letters 2021; doi: https://doi.org/10.1785/0220200382
