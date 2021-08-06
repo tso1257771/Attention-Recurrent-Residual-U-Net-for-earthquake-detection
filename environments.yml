@@ -13,6 +13,6 @@ dependencies:
   - numpy 
   - tensorflow-gpu=2.4.0
   - tensorflow-addons=0.11.2
-  - pip
+  - pip:
     - obspy=1.1.0
 
