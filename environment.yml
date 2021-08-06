@@ -11,8 +11,8 @@ dependencies:
   - matplotlib
   - pandas
   - numpy     
-  - tensorflow-gpu=2.4.0
-  - tensorflow-addons=0.11.2
+  - tensorflow-gpu=2.4
+  - tensorflow-addons
   - pip:
     - obspy=1.1.0
 
