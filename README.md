@@ -34,6 +34,6 @@ The former works as seismic phase picker described in our paper, and the latter 
 6. Stable real-time processing <br/>
 
 # Binder link
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/tso1257771/Attention-Recurrent-Residual-U-Net-for-earthquake-detection/8683acc184712c35cd23f45e246d9559f851eb9a)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/tso1257771/Attention-Recurrent-Residual-U-Net-for-earthquake-detection/HEAD)
 # Reference
 Wu‐Yu Liao, En‐Jui Lee, Dawei Mu, Po Chen, Ruey‐Juin Rau; ARRU Phase Picker: Attention Recurrent‐Residual U‐Net for Picking Seismic P‐ and S‐Phase Arrivals. Seismological Research Letters 2021; doi: https://doi.org/10.1785/0220200382
