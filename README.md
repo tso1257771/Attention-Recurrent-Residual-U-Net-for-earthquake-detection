@@ -9,7 +9,7 @@ https://user-images.githubusercontent.com/30610646/120765835-327a6300-c54c-11eb-
 Below describes the workflow from data generation, model training, making predictions, to model evaluation. 
 
 1. **Prepare the seismic recordings from STEAD data** : **`P01_make_stream_STEAD.py`**<br/>
-This script simply generates sac files as well as TFRecord in length of 20 seconds. This would require the STEAD dataset (https://github.com/smousavi05/STEAD), please download and place the file 'merge.hdf5' (you could retreive this entire STEAD dataset here: https://mega.nz/folder/HNwm0SLY#h70tuXK2tpiQJAaPq72FFQ) in the directory '`./data`'. <br/>
+This script simply generates sac files as well as TFRecord in length of 20 seconds. This would require the [STEAD](https://github.com/smousavi05/STEAD) dataset , please download and place the file 'merge.hdf5' (you could retreive this entire [STEAD](https://mega.nz/folder/HNwm0SLY#h70tuXK2tpiQJAaPq72FFQ) dataset here in the directory '`./data`'. <br/>
 You can change the variable '`csv_type`' in line 22 with [`train`, `test`, `val`] to generate dataset we used in our study according to the files stored in '`./data/partition_csv`'. Noted that you have to make '`./data/partition_csv/train_STEAD.csv`' by yourselves according to uploaded lists of STEAD dataset for data partition, if needed. <br/><br/>
 Output directory: **(1) './data/sac_data_STEAD_20s' (2) './data/input_TFRecord_STEAD_20s'**
 
