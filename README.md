@@ -26,8 +26,6 @@ The former works as seismic phase picker described in our paper, and the latter 
 5. Quick example of making predictions using pretrained model <br/>
 ```$ python quick_ex.py```
 
-6. Stable real-time processing <br/>
-
 # Binder link
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/tso1257771/Attention-Recurrent-Residual-U-Net-for-earthquake-detection/HEAD)
 # Reference
